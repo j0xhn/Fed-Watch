@@ -27,6 +27,9 @@
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,11 +40,44 @@
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-   <script>
+   <!-- Facebook integration -->
+    <div id="fb-root"></div>
+    <script type="text/javascript">
 
-       
-       
+    //***********************************************************
+    // Be sure to add your Parse Keys and Facebook App ID Below!
+    //***********************************************************
+    // Initialize Parse
+    Parse.initialize("qRbiNmQzpc7lRx3WKc4Wxza3pnEZo4t96Bj8PIvY", "KUbE43wF7KWrYiTMPHdq3Xsm8Eo8NquhhFXOvqif");
+      // Initialize the Facebook SDK with Parse as described at 
+      // https://parse.com/docs/js_guide#fbusers
+      window.fbAsyncInit = function() {
+        // init the FB JS SDK
+        Parse.FacebookUtils.init({
+          appId      : '1563097570598524', // Facebook App ID
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow Parse to access the session
+          xfbml      : true,  // parse XFBML
+          channelUrl : '//localhost:3000'
+      });
+    };
+
+        
+
+
+    (function(d, debug){
+       var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement('script'); js.id = id; js.async = true;
+       js.src = "//connect.facebook.net/en_US/all.js";
+       ref.parentNode.insertBefore(js, ref);
+   }(document, false));
+
+
+
     </script>
+
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -63,7 +99,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll login" onClick="facebookLogin()">Login</a>
+                        <a class="page-scroll login" onClick="fbLogin()">Login</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#search">Search</a>
@@ -87,12 +123,6 @@
                         <h1 class="brand-heading"><i class="fa fa-search"></i>    Federal Registrar</h1>
                         <p class="intro-text mar0">A free, easy to use search tool for our nation's registrar.</p>
                         <p class='f14 o6'>created at #hackdance for the lgbtq team</p>
-                        <div
-                            class="fb-like"
-                            data-send="true"
-                            data-width="450"
-                            data-show-faces="true">
-                        </div>
                     <a href="#search" class="btn btn-circle page-scroll">
                         <i class="fa fa-angle-double-down animated"></i>
                     </a>
@@ -238,7 +268,7 @@
                             <td>2012/12/02</td>
                             <td class=" dt-body-right">$372,000</td>
                         </tr>
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -256,8 +286,8 @@
     <script src="js/jquery.js"></script>
     
     <!-- Parse -->
-    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.4.min.js"></script>
     <script src="js/parse-calls.js"></script>
+
     <script src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
 
 
