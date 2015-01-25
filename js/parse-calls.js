@@ -1,14 +1,18 @@
 $(document).ready(function(){
 	$('#example').DataTable();
-});
 
-var currentUser = Parse.User.current();
-if (currentUser) {
-    console.log(currentUser)
-} else {
+	var currentUser = Parse.User.current();
+	if (currentUser) {
+		window.userImg = 'https://graph.facebook.com/' + currentUser.attributes.authData.facebook.id + '/picture?width=150&height=150'
+		$('.login').replaceWith('<img class="profile-pic" src=' + userImg + '>');
+	} else {
     // show the signup or login page
     alert('not logged in')
 }
+
+});
+
+
 
 
 
